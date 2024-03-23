@@ -1,0 +1,56 @@
+{
+  "name": "quiquo",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build --ws --if-present",
+    "dev": "npm run dev --w=@web3modal/core & npm run dev --w=@web3modal/ui & npm run dev --w=@web3modal/ethereum & npm run dev --w=@web3modal/react",
+    "dev:lab": "npm run dev --w=laboratory",
+    "lint": "eslint .",
+    "prettier": "prettier --check .",
+    "typecheck": "npm run typecheck --ws --if-present",
+    "new-version": "lerna version --no-git-tag-version --exact",
+    "pre-publish": "npm run lint; npm run typecheck; npm run prettier; npm run new-version; npm run build;",
+    "publish:latest": "lerna exec -- npm publish --no-private --access public --tag latest",
+    "publish:canary": "lerna exec -- npm publish --no-private --access public --tag canary"
+  },
+  "workspaces": [
+    "chains/ethereum",
+    "packages/core",
+    "packages/ui",
+    "packages/react",
+    "packages/html",
+    "packages/standalone",
+    "packages/auth-react",
+    "packages/auth-html",
+    "laboratory"
+  ],
+  "devDependencies": {
+    "@types/node": "20.1.1",
+    "@typescript-eslint/eslint-plugin": "5.59.5",
+    "@typescript-eslint/parser": "5.59.5",
+    "@rollup/plugin-replace": "5.0.2",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "esbuild": "0.17.18",
+    "eslint": "8.40.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "lerna": "6.6.2",
+    "prettier": "2.8.8",
+    "rollup": "3.21.6",
+    "rollup-plugin-esbuild": "5.0.0",
+    "rollup-plugin-minify-html-literals": "1.2.6",
+    "rollup-plugin-lit-css": "4.0.1",
+    "typescript": "5.0.4"
+  },
+  "author": "ElisaBalistreri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JustusSchiller/quiquo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JustusSchiller/quiquo.git/issues"
+  }
+}
